@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Песня про купца Калашникова — Вики персонажей</title>
+<style>
+  :root{
+    --bg:#0d0d0d;
+    --bg2:#151515;
+    --card:#1a1a1a;
+    --orange:#ff7a00;
+    --orange-soft:#ff9a3c;
+    --text:#e8e8e8;
+    --muted:#9a9a9a;
+    --border:#2a2a2a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  a{color:var(--orange);text-decoration:none}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(13,13,13,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--orange);
+  }
+  .header-inner{
+    max-width:1200px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  }
+  .logo{
+    font-size:1.4rem;font-weight:700;letter-spacing:.5px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo .flame{
+    width:26px;height:26px;
+    background:radial-gradient(circle at 30% 70%,#ffb347,var(--orange) 60%,#7a3800);
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    box-shadow:0 0 14px rgba(255,122,0,.7);
+  }
+  .logo span{color:var(--orange)}
+  nav{display:flex;gap:8px;flex-wrap:wrap}
+  nav a{
+    color:var(--text);padding:6px 12px;border-radius:6px;font-size:.9rem;
+    border:1px solid transparent;transition:.2s;
+  }
+  nav a:hover{border-color:var(--orange);color:var(--orange)}
+
+  /* ===== HERO ===== */
+  .hero{
+    max-width:1200px;margin:0 auto;padding:70px 24px 50px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at 50% 0%,rgba(255,122,0,.18),transparent 60%);
+  }
+  .hero h1{
+    font-size:clamp(1.8rem,4vw,3rem);
+    font-weight:800;line-height:1.15;margin-bottom:18px;
+  }
+  .hero h1 em{color:var(--orange);font-style:normal}
+  .hero p{color:var(--muted);max-width:720px;margin:0 auto;font-size:1.05rem}
+  .hero .divider{
+    width:80px;height:4px;background:var(--orange);
+    margin:26px auto 0;border-radius:2px;
+    box-shadow:0 0 16px rgba(255,122,0,.8);
+  }
+
+  /* ===== CHARACTERS ===== */
+  .chars{
+    max-width:1200px;margin:0 auto;padding:20px 24px 80px;
+    display:grid;gap:28px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  }
+  .card{
+    background:linear-gradient(160deg,var(--card),var(--bg2));
+    border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:.25s ease;
+    position:relative;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--orange),transparent);
+    opacity:.7;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--orange);
+    box-shadow:0 12px 34px rgba(255,122,0,.18);
+  }
+
+  /* портрет */
+  .portrait{
+    height:220px;
+    background:
+      radial-gradient(circle at 50% 35%,rgba(255,122,0,.22),transparent 65%),
+      #101010;
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--border);
+    position:relative;
+  }
+  .portrait svg{height:190px;filter:drop-shadow(0 0 12px rgba(255,122,0,.35))}
+  .portrait .initials{
+    position:absolute;bottom:10px;right:14px;
+    font-size:.75rem;color:var(--muted);letter-spacing:2px;
+  }
+
+  /* content */
+  .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+  .card-body h2{
+    font-size:1.35rem;color:#fff;line-height:1.25;
+  }
+  .card-body h2 small{
+    display:block;font-size:.8rem;color:var(--orange);
+    font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-top:4px;
+  }
+
+  .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{
+    font-size:.72rem;padding:3px 10px;border-radius:999px;
+    border:1px solid var(--orange);color:var(--orange-soft);
+    background:rgba(255,122,0,.08);letter-spacing:.5px;
+  }
+  .tag.gray{border-color:var(--border);color:var(--muted);background:transparent}
+
+  .section-title{
+    font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--orange);margin-bottom:4px;font-weight:700;
+  }
+  .card-body p{font-size:.92rem;color:#cfcfcf}
+  .card-body ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .card-body li{
+    font-size:.88rem;color:#cfcfcf;padding-left:18px;position:relative;
+  }
+  .card-body li::before{
+    content:"▸";position:absolute;left:0;color:var(--orange);
+  }
+
+  .good li::before{content:"✔";color:#4caf50}
+  .bad li::before{content:"✖";color:#e05a5a}
+
+  blockquote{
+    border-left:3px solid var(--orange);
+    background:rgba(255,122,0,.06);
+    padding:10px 14px;border-radius:0 8px 8px 0;
+    font-style:italic;color:#f0d9c0;font-size:.9rem;
+  }
+  blockquote footer{
+    font-style:normal;font-size:.75rem;color:var(--muted);margin-top:4px;
+  }
+
+  .meta{
+    display:grid;grid-template-columns:auto 1fr;gap:4px 14px;
+    font-size:.85rem;padding-top:6px;
+    border-top:1px solid var(--border);
+  }
+  .meta dt{color:var(--muted)}
+  .meta dd{color:#e0e0e0}
+  .meta dd.death{color:#ff6b6b}
+
+  /* ===== FOOTER ===== */
+  footer.site{
+    border-top:2px solid var(--orange);
+    text-align:center;padding:34px 24px;
+    color:var(--muted);font-size:.85rem;
+    background:var(--bg2);
+  }
+  footer.site b{color:var(--orange)}
+
+  @media (max-width:480px){
+    .header-inner{justify-content:center}
+    .hero{padding:50px 18px 36px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <div class="logo"><div class="flame"></div>Калашников<span>Wiki</span></div>
+    <nav>
+      <a href="#hero">Главная</a>
+      <a href="#chars">Персонажи</a>
+      <a href="#chars">О поэме</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <h1>«Песня про <em>царя Ивана Васильевича</em>,<br>молодого опричника и удалого купца Калашникова»</h1>
+  <p>Вики-справочник по персонажам поэмы М. Ю. Лермонтова (1837). Внешность, характер, роль в сюжете, поступки и судьба каждого героя.</p>
+  <div class="divider"></div>
+</section>
+
+<!-- ================= CHARACTERS ================= -->
+<main class="chars" id="chars">
+
+  <!-- ===== КАЛАШНИКОВ ===== -->
+  <article class="card">
+    <div class="portrait">
+      <!-- Стилизованный SVG-портрет купца -->
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ff9a3c"/><stop offset="100%" stop-color="#c25a00"/>
+          </linearGradient>
+        </defs>
+        <!-- борода -->
+        <path d="M45 85 Q60 120 75 85 Q70 105 60 110 Q50 105 45 85 Z" fill="#3a2a1a"/>
+        <!-- лицо -->
+        <ellipse cx="60" cy="70" rx="22" ry="26" fill="url(#g1)"/>
+        <!-- волосы -->
+        <path d="M38 62 Q36 40 60 36 Q84 40 82 62 Q78 48 60 46 Q42 48 38 62 Z" fill="#2a1e14"/>
+        <!-- глаза -->
+        <circle cx="52" cy="68" r="2.6" fill="#111"/>
+        <circle cx="68" cy="68" r="2.6" fill="#111"/>
+        <!-- брови -->
+        <path d="M46 61 Q52 57 58 61" stroke="#1a1208" stroke-width="2" fill="none"/>
+        <path d="M62 61 Q68 57 74 61" stroke="#1a1208" stroke-width="2" fill="none"/>
+        <!-- усы -->
+        <path d="M52 82 Q60 78 68 82" stroke="#2a1e14" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- кафтан -->
+        <path d="M36 96 Q60 108 84 96 L88 140 L32 140 Z" fill="#4a1f1f"/>
+        <path d="M36 96 Q60 108 84 96" stroke="#ff7a00" stroke-width="2" fill="none"/>
+      </svg>
+      <span class="initials">СК</span>
+    </div>
+
+    <div class="card-body">
+      <h2>Степан Парамонович Калашников<small>Купец</small></h2>
+      <div class="tags">
+        <span class="tag">Главный герой</span>
+        <span class="tag gray">Мужчина</span>
+        <span class="tag gray">Зрелый возраст</span>
+      </div>
+
+      <div>
+        <div class="section-title">Внешность</div>
+        <p>Статный, широкоплечий молодец, «удалой купец». На кулачном бою — в алой рубахе и собольей шапке. Густые тёмные волосы и борода, решительный взгляд.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Характер</div>
+        <p>Мужественный, гордый, честный и прямой. Глубоко верен семье и своему слову. Не терпит несправедливости, готов постоять за правду даже ценой жизни.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Появление в поэме</div>
+        <p>Во второй главе — дома, в кругу семьи. Затем — на Москве-реке во время кулачного боя, где он выходит против опричника.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Роль в произведении</div>
+        <p>Носитель народной правды и чести. Его конфликт с опричниной — центральный моральный поединок поэмы: личное достоинство против произвола власти.</p>
+      </div>
+
+      <div class="good">
+        <div class="section-title">Хорошие поступки</div>
+        <ul>
+          <li>Защищает честь жены и семьи.</li>
+          <li>Открыто выходит на бой, не нападая из-за угла.</li>
+          <li>Берёт вину на себя, не раскрывая причины, чтобы не позорить жену.</li>
+          <li>Просит царя о милости не для себя, а для родных.</li>
+        </ul>
+      </div>
+
+      <div class="bad">
+        <div class="section-title">Плохие поступки</div>
+        <ul>
+          <li>Совершает убийство — пусть в поединке, но насмерть.</li>
+          <li>Не раскрывает правду царю, обрекая себя на казнь.</li>
+        </ul>
+      </div>
+
+      <blockquote>
+        «Я убил его вольной волею,<br>А за что, про что — не скажу тебе!»
+        <footer>— Калашников Ивану Грозному</footer>
+      </blockquote>
+
+      <div>
+        <div class="section-title">Смерть</div>
+        <p>Казнён по приказу Ивана Грозного за убийство Кирибеевича. Похоронен «меж трёх дорог», и народ помнит его могилу.</p>
+      </div>
+
+      <dl class="meta">
+        <dt>Пол</dt><dd>Мужской</dd>
+        <dt>Возраст</dt><dd>Зрелый (женат, есть дети)</dd>
+        <dt>Семья</dt><dd>Жена Алёна Дмитриевна, дети</dd>
+        <dt>Судьба</dt><dd class="death">Казнён</dd>
+      </dl>
+    </div>
+  </article>
+
+  <!-- ===== КИРИБЕЕВИЧ ===== -->
+  <article class="card">
+    <div class="portrait">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8b98a"/><stop offset="100%" stop-color="#a9743f"/>
+          </linearGradient>
+        </defs>
+        <!-- лицо -->
+        <ellipse cx="60" cy="70" rx="21" ry="25" fill="url(#g2)"/>
+        <!-- волосы (молодой, кудри) -->
+        <path d="M39 64 Q34 36 60 32 Q86 36 81 64 Q80 46 60 44 Q40 46 39 64 Z" fill="#2b1c0e"/>
+        <path d="M36 60 Q30 70 34 82" stroke="#2b1c0e" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M84 60 Q90 70 86 82" stroke="#2b1c0e" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <!-- глаза -->
+        <circle cx="52" cy="68" r="2.6" fill="#111"/>
+        <circle cx="68" cy="68" r="2.6" fill="#111"/>
+        <!-- брови -->
+        <path d="M46 61 Q52 57 58 61" stroke="#1a1208" stroke-width="2" fill="none"/>
+        <path d="M62 61 Q68 57 74 61" stroke="#1a1208" stroke-width="2" fill="none"/>
+        <!-- усы -->
+        <path d="M53 82 Q60 79 67 82" stroke="#1a1208" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- серьга -->
+        <circle cx="40" cy="82" r="3" fill="#ffcf5c" stroke="#c25a00" stroke-width="1"/>
+        <!-- кафтан опричника -->
+        <path d="M37 96 Q60 106 83 96 L87 140 L33 140 Z" fill="#1f1f1f"/>
+        <path d="M46 96 L60 140 L74 96" stroke="#8a8a8a" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="initials">К</span>
+    </div>
+
+    <div class="card-body">
+      <h2>Кирибеевич<small>Молодой опричник</small></h2>
+      <div class="tags">
+        <span class="tag">Антагонист</span>
+        <span class="tag gray">Мужчина</span>
+        <span class="tag gray">Молодой</span>
+      </div>
+
+      <div>
+        <div class="section-title">Внешность</div>
+        <p>Красавец-молодец, кудрявый, с серьгой в ухе. Богато одет как царский любимец. Удалой и статный, но взгляд его — дерзкий и хищный.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Характер</div>
+        <p>Дерзкий, страстный, самовлюблённый. Привык к безнаказанности и вседозволенности. В любви — эгоистичен, не считается с чужими чувствами и честью.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Появление в поэме</div>
+        <p>В первой главе — на пиру у Ивана Грозного, где он хмур и признаётся царю в своей страсти. Далее — сцена ночного приставания к Алёне у церкви.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Роль в произведении</div>
+        <p>Олицетворяет опричный произвол и беззаконие. Его поведение становится причиной конфликта и трагедии, раскрывая тему вседозволенности власти.</p>
+      </div>
+
+      <div class="good">
+        <div class="section-title">Хорошие поступки</div>
+        <ul>
+          <li>Честно признаётся царю в своих чувствах.</li>
+          <li>Обладает удалью и отвагой в бою.</li>
+        </ul>
+      </div>
+
+      <div class="bad">
+        <div class="section-title">Плохие поступки</div>
+        <ul>
+          <li>Публично оскорбляет замужнюю женщину.</li>
+          <li>Пристаёт к Алёне Дмитриевне, целует её против воли.</li>
+          <li>Хвастается и бесчестит её имя перед народом.</li>
+          <li>Скрывает от царя правду о том, что Алёна замужем.</li>
+        </ul>
+      </div>
+
+      <blockquote>
+        «Ай, сударь, Иван Васильевич!<br>Обманул тебя твой лукавый раб…»
+        <footer>— Кирибеевич о своей любви</footer>
+      </blockquote>
+
+      <div>
+        <div class="section-title">Смерть</div>
+        <p>Убит Калашниковым ударом в висок в честном кулачном бою на Москве-реке.</p>
+      </div>
+
+      <dl class="meta">
+        <dt>Пол</dt><dd>Мужской</dd>
+        <dt>Возраст</dt><dd>Молодой</dd>
+        <dt>Статус</dt><dd>Опричник, любимец царя</dd>
+        <dt>Судьба</dt><dd class="death">Убит на кулачном бою</dd>
+      </dl>
+    </div>
+  </article>
+
+  <!-- ===== ИВАН ГРОЗНЫЙ ===== -->
+  <article class="card">
+    <div class="portrait">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d9a066"/><stop offset="100%" stop-color="#8f5a2a"/>
+          </linearGradient>
+        </defs>
+        <!-- шапка Мономаха -->
+        <path d="M40 44 L44 26 Q60 18 76 26 L80 44 Z" fill="#3a1a1a" stroke="#ff7a00" stroke-width="2"/>
+        <circle cx="60" cy="18" r="4" fill="#ffcf5c"/>
+        <path d="M40 44 L80 44" stroke="#ff7a00" stroke-width="2"/>
+        <!-- лицо -->
+        <ellipse cx="60" cy="72" rx="22" ry="26" fill="url(#g3)"/>
+        <!-- борода -->
+        <path d="M44 84 Q46 118 60 122 Q74 118 76 84 Q70 104 60 106 Q50 104 44 84 Z" fill="#4a3423"/>
+        <!-- глаза (пронзительные) -->
+        <circle cx="51" cy="68" r="2.8" fill="#111"/>
+        <circle cx="69" cy="68" r="2.8" fill="#111"/>
+        <!-- брови нахмуренные -->
+        <path d="M45 61 Q52 59 58 62" stroke="#1a1208" stroke-width="2.4" fill="none"/>
+        <path d="M62 62 Q68 59 75 61" stroke="#1a1208" stroke-width="2.4" fill="none"/>
+        <!-- усы -->
+        <path d="M52 82 Q60 79 68 82" stroke="#2a1e14" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- царская шуба -->
+        <path d="M34 98 Q60 108 86 98 L90 140 L30 140 Z" fill="#4a1010"/>
+        <path d="M34 98 Q60 108 86 98" stroke="#ffcf5c" stroke-width="2.5" fill="none"/>
+        <circle cx="45" cy="112" r="2" fill="#ffcf5c"/>
+        <circle cx="60" cy="116" r="2" fill="#ffcf5c"/>
+        <circle cx="75" cy="112" r="2" fill="#ffcf5c"/>
+      </svg>
+      <span class="initials">ИГ</span>
+    </div>
+
+    <div class="card-body">
+      <h2>Иван Васильевич Грозный<small>Царь</small></h2>
+      <div class="tags">
+        <span class="tag">Власть</span>
+        <span class="tag gray">Мужчина</span>
+        <span class="tag gray">Зрелый</span>
+      </div>
+
+      <div>
+        <div class="section-title">Внешность</div>
+        <p>Величавый государь в царской шубе и шапке Мономаха. Суровый, пронзительный взгляд, густая борода. Окружён боярами и опричниками.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Характер</div>
+        <p>Властный, грозный, но способный на милость. Подозрителен, скор на расправу, однако ценит удаль и прямоту. Его воля — закон для всех.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Появление в поэме</div>
+        <p>Открывает первую главу — пир в Кремле. Появляется и в финале, верша суд над Калашниковым.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Роль в произведении</div>
+        <p>Символизирует верховную власть: и справедливую, и страшную. Его приговор определяет судьбу героев и подчёркивает трагизм конфликта личности и государства.</p>
+      </div>
+
+      <div class="good">
+        <div class="section-title">Хорошие поступки</div>
+        <ul>
+          <li>Позволяет провести честный кулачный бой.</li>
+          <li>Обещает позаботиться о семье казнённого купца.</li>
+          <li>Ценит прямоту и удаль.</li>
+        </ul>
+      </div>
+
+      <div class="bad">
+        <div class="section-title">Плохие поступки</div>
+        <ul>
+          <li>Покровительствует опричникам, поощряя их произвол.</li>
+          <li>Приговаривает Калашникова к смерти.</li>
+        </ul>
+      </div>
+
+      <blockquote>
+        «Подыми-ка, детинушка, очи ясные,<br>Отвечай мне, что за причина…»
+        <footer>— Иван Грозный Калашникову</footer>
+      </blockquote>
+
+      <div>
+        <div class="section-title">Смерть</div>
+        <p>Не умирает в поэме — остаётся верховным судией.</p>
+      </div>
+
+      <dl class="meta">
+        <dt>Пол</dt><dd>Мужской</dd>
+        <dt>Возраст</dt><dd>Зрелый</dd>
+        <dt>Статус</dt><dd>Царь всея Руси</dd>
+        <dt>Судьба</dt><dd>Жив (в рамках поэмы)</dd>
+      </dl>
+    </div>
+  </article>
+
+  <!-- ===== АЛЁНА ДМИТРИЕВНА ===== -->
+  <article class="card">
+    <div class="portrait">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f3c9a0"/><stop offset="100%" stop-color="#c98a55"/>
+          </linearGradient>
+        </defs>
+        <!-- платок / кокошник -->
+        <path d="M38 52 Q60 24 82 52 Q80 40 60 34 Q40 40 38 52 Z" fill="#b5301f"/>
+        <path d="M38 52 Q40 40 60 34 Q80 40 82 52" fill="#b5301f"/>
+        <!-- лицо -->
+        <ellipse cx="60" cy="72" rx="20" ry="24" fill="url(#g4)"/>
+        <!-- волосы по бокам -->
+        <path d="M40 62 Q36 80 42 92" stroke="#3a2410" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M80 62 Q84 80 78 92" stroke="#3a2410" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- глаза -->
+        <circle cx="53" cy="70" r="2.4" fill="#111"/>
+        <circle cx="67" cy="70" r="2.4" fill="#111"/>
+        <!-- брови -->
+        <path d="M48 64 Q53 61 58 64" stroke="#2a1a08" stroke-width="2" fill="none"/>
+        <path d="M62 64 Q67 61 72 64" stroke="#2a1a08" stroke-width="2" fill="none"/>
+        <!-- губы -->
+        <path d="M55 84 Q60 88 65 84" stroke="#a03a2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- сарафан -->
+        <path d="M38 98 Q60 108 82 98 L86 140 L34 140 Z" fill="#8a1f1f"/>
+        <path d="M38 98 Q60 108 82 98" stroke="#ffcf5c" stroke-width="2" fill="none"/>
+        <path d="M46 108 L46 140 M60 110 L60 140 M74 108 L74 140" stroke="#ffcf5c" stroke-width="1" opacity=".6"/>
+      </svg>
+      <span class="initials">АД</span>
+    </div>
+
+    <div class="card-body">
+      <h2>Алёна Дмитриевна<small>Жена купца</small></h2>
+      <div class="tags">
+        <span class="tag">Героиня</span>
+        <span class="tag gray">Женщина</span>
+        <span class="tag gray">Молодая</span>
+      </div>
+
+      <div>
+        <div class="section-title">Внешность</div>
+        <p>Красавица-русская женщина: статная, с длинной косой, в алом сарафане и платке. Лицо светлое, глаза ясные, взгляд кроткий.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Характер</div>
+        <p>Верная, кроткая, глубоко нравственная. Любит мужа, дорожит семьёй и честью. В беде ищет защиты у мужа, а не у чужих.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Появление в поэме</div>
+        <p>В сцене у церкви, где её встречает Кирибеевич, и затем дома — в слезах перед мужем.</p>
+      </div>
+
+      <div>
+        <div class="section-title">Роль в произведении</div>
+        <p>Источник конфликта и мерило нравственной чистоты. Её поруганная честь становится причиной поединка и раскрывает тему защиты семейных святынь.</p>
+      </div>
+
+      <div class="good">
+        <div class="section-title">Хорошие поступки</div>
+        <ul>
+          <li>Хранит верность мужу.</li>
+          <li>Открыто рассказывает обо всём супругу, не скрывая.</li>
+          <li>Соблюдает благочестие и ходит в церковь.</li>
+        </ul>
+      </div>
+
+      <div class="bad">
+        <div class="section-title">Плохие поступки</div>
+        <ul>
+          <li>Нет — она жертва, а не нарушительница.</li>
+        </ul>
+      </div>
+
+      <blockquote>
+        «Ох ты гой еси, мой муж, господин!<br>Обесчестил меня злой опричник…»
+        <footer>— Алёна Дмитриевна мужу</footer>
+      </blockquote>
+
+      <div>
+        <div class="section-title">Смерть</div>
+        <p>Не умирает в поэме; остаётся вдовой с детьми.</p>
+      </div>
+
+      <dl class="meta">
+        <dt>Пол</dt><dd>Женский</dd>
+        <dt>Возраст</dt><dd>Молодая</dd>
+        <dt>Семья</dt><dd>Муж — Калашников, дети</dd>
+        <dt>Судьба</dt><dd>Остаётся жива</dd>
+      </dl>
+    </div>
+  </article>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  © Вики персонажей <b>«Песни про купца Калашникова»</b> · Поэма М. Ю. Лермонтова, 1837<br>
+  Сделано в чёрно-оранжевом стиле · Все имена и цитаты — по тексту произведения.
+</footer>
+
+</body>
+</html>
